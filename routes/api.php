@@ -9,4 +9,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'Api'], function () {
     Route::resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
     Route::apiResource('genres', 'GenreController');
+    Route::apiResource('cast_members', 'CastMemberController');
 });
