@@ -60,6 +60,7 @@ class CategoryControllerTest extends TestCase
         $data = [
             'name' => 'test'
         ];
+
         $response = $this->assertStore(
             $data,
             $data + [
@@ -68,6 +69,7 @@ class CategoryControllerTest extends TestCase
                 'deleted_at' => null
             ]
         );
+
         $response->assertJsonStructure([
             'created_at',
             'updated_at'
@@ -78,6 +80,7 @@ class CategoryControllerTest extends TestCase
             'description' => 'description test',
             'is_active' => false
         ];
+
         $this->assertStore(
             $data,
             $data + [
@@ -104,22 +107,19 @@ class CategoryControllerTest extends TestCase
 
     public function testUpdate()
     {
-        $this->category = factory(Category::class)->create([
-            'description' => 'description',
-            'is_active' => false
-        ]);
-
         $data = [
             'name' => 'name test',
             'description' => 'description test',
             'is_active' => true
         ];
+
         $response = $this->assertUpdate(
             $data,
             $data + [
                 'deleted_at' => null
             ]
         );
+
         $response->assertJsonStructure([
             'created_at',
             'updated_at'
@@ -129,6 +129,7 @@ class CategoryControllerTest extends TestCase
             'name' => 'name test',
             'description' => ''
         ];
+
         $this->assertUpdate(
             $data,
             array_merge(

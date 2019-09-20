@@ -73,7 +73,7 @@ class GenreTest extends TestCase
         ];
         $genre->update($data);
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->assertEquals($value, $genre->{$key});
         }
     }

@@ -58,8 +58,9 @@ class GenreControllerTest extends TestCase
     public function testStore()
     {
         $data = [
-            'name' => 'test'
+            'name' => 'test_name'
         ];
+
         $response = $this->assertStore(
             $data,
             $data + [
@@ -67,15 +68,17 @@ class GenreControllerTest extends TestCase
                 'deleted_at' => null
             ]
         );
+
         $response->assertJsonStructure([
             'created_at',
             'updated_at'
         ]);
 
         $data = [
-            'name' => 'name test',
+            'name' => 'test_name',
             'is_active' => false
         ];
+
         $this->assertStore(
             $data,
             $data + [
@@ -101,20 +104,18 @@ class GenreControllerTest extends TestCase
 
     public function testUpdate()
     {
-        $this->genre = factory(Genre::class)->create([
-            'is_active' => false
-        ]);
-
         $data = [
-            'name' => 'name test',
+            'name' => 'test_name',
             'is_active' => true
         ];
+
         $response = $this->assertUpdate(
             $data,
             $data + [
                 'deleted_at' => null
             ]
         );
+
         $response->assertJsonStructure([
             'created_at',
             'updated_at'

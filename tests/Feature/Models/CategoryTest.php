@@ -94,7 +94,7 @@ class CategoryTest extends TestCase
         ];
         $category->update($data);
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->assertEquals($value, $category->{$key});
         }
     }

@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Genre extends Model
 {
-    use SoftDeletes, Uuid;
+    use Uuid, SoftDeletes;
 
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = [
+        'name',
+        'is_active'
+    ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = [
+        'deleted_at'
+    ];
 
     protected $casts = [
         'id' => 'string',
