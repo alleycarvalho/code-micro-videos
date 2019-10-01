@@ -12,7 +12,7 @@ services:
   # Application ############################################
   app:
     build: .
-    container_name: micro-videos-app
+    container_name: app
     volumes:
       - .:/var/www
     networks:
@@ -24,8 +24,7 @@ services:
   # NGINX Server ############################################
   nginx:
     build: .docker/nginx
-    entrypoint: dockerize -template ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf -wait tcp://app:9000 -timeout 40s nginx -g "daemon off";
-    container_name: micro-videos-nginx
+    container_name: nginx
     restart: always
     tty: true
     volumes:
@@ -41,7 +40,7 @@ services:
   db:
     image: mysql:5.7
     command: --innodb-use-native-aio=0
-    container_name: micro-videos-db
+    container_name: db
     restart: always
     tty: true
     environment:
@@ -58,7 +57,7 @@ services:
   # Redis #################################################
   redis:
     image: redis:alpine
-    container_name: micro-videos-redis
+    container_name: redis
     expose:
       - 6379
     networks:
