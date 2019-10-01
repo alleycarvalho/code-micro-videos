@@ -7,7 +7,7 @@ use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Tests\TestCase;
 
-class CategoryTest extends TestCase
+class CategoryUnitTest extends TestCase
 {
     private $category;
 
@@ -21,9 +21,10 @@ class CategoryTest extends TestCase
     public function testIfUseTraits()
     {
         $traits = [
-            SoftDeletes::class,
-            Uuid::class
+            Uuid::class,
+            SoftDeletes::class
         ];
+
         $categoryTraits = array_keys(class_uses(Category::class));
 
         $this->assertEquals($traits, $categoryTraits);

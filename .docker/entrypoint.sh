@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cp .env.example .env
-cp .env.testing .env.testing
+cp .env.testing.example .env.testing
 
 composer install
 php artisan key:generate

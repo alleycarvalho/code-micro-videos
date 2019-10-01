@@ -6,14 +6,16 @@ use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class CastMember extends Model
 {
     use Uuid, SoftDeletes;
 
+    const TYPE_DIRECTOR = 1;
+    const TYPE_ACTOR = 2;
+
     protected $fillable = [
         'name',
-        'description',
-        'is_active'
+        'type'
     ];
 
     protected $dates = [
@@ -22,7 +24,7 @@ class Category extends Model
 
     protected $casts = [
         'id' => 'string',
-        'is_active' => 'boolean'
+        'type' => 'integer'
     ];
 
     public $incrementing = false;
