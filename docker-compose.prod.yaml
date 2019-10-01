@@ -24,6 +24,7 @@ services:
   # NGINX Server ############################################
   nginx:
     build: .docker/nginx
+    entrypoint: dockerize -template ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf -wait tcp://app:9000 -timeout 40s nginx -g "daemon off";
     container_name: micro-videos-nginx
     restart: always
     tty: true
